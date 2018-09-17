@@ -2,4 +2,7 @@
 
 Period 2.1 project
 
-Made by Juda Hensen & Brandon Ruigrok from class GD2B.
+
+Made by Juda Hensen & Brandon Ruigrok
+
+Mediacollege Amserdam, GD2B.
