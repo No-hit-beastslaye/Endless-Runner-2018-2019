@@ -15,11 +15,6 @@ public class InputHandler : MonoBehaviour {
     public GameObject player;
 
 
-    void Start () {
-
-	}
-
-
 	void Update () {
         // check if the player uses an ability
         if ( Input.GetKey( input_menu ) ) print("Menu");
