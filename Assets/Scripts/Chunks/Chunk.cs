@@ -13,7 +13,6 @@ public class Chunk : MonoBehaviour {
 
     public void Remove()
     {
-        print("destroy");
-        Destroy(this);
+        Destroy(gameObject);
     }
 }

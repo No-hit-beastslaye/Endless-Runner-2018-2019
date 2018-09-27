@@ -11,7 +11,7 @@ public class ChunkSpawner : MonoBehaviour {
     private Transform _player;
     private Chunk _previousChunk;
     private float _trigger = -8;
-    //private int _chunkCounter = 0;
+    private int _chunkCounter = 0;
 
 
 	private void Awake () {
@@ -41,11 +41,11 @@ public class ChunkSpawner : MonoBehaviour {
 
         _trigger += newChunk.Size.x;
 
-        //_chunkCounter++;
-        //if(_chunkCounter >= 2)
-        //{
-            //_chunkCounter = 2;
-            //GameObject.Destroy( GameObject.FindWithTag("ChunkSpawner").transform.GetChild(0) );
-        //}
+        _chunkCounter++;
+        if(_chunkCounter >= 4)
+        {
+            _chunkCounter = 4;
+            GameObject.FindWithTag("ChunkSpawner").transform.GetChild(0).GetComponent<Chunk>().Remove();
+        }
     }
 }
