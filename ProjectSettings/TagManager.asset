@@ -5,6 +5,8 @@ TagManager:
   serializedVersion: 2
   tags:
   - ChunkSpawner
+  - Anti-Virus
+  - Firewall
   layers:
   - Default
   - TransparentFX
