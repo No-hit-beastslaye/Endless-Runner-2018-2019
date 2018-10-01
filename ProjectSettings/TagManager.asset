@@ -7,7 +7,7 @@ TagManager:
   - ChunkSpawner
   - Anti-Virus
   - Firewall
-  - Wall_1
+  - Wall
   layers:
   - Default
   - TransparentFX
