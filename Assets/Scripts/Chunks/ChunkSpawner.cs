@@ -10,41 +10,49 @@ public class ChunkSpawner : MonoBehaviour {
 
     private Transform _player;
     private Chunk _previousChunk;
-    private float _trigger = -8;
+    private float _trigger = -9;
     private int _chunkCounter = 0;
 
 
 	private void Awake () {
         _player = GameObject.FindWithTag("Player").transform;
-	}
+        
+    }
 
     private void Start()
     {
         _previousChunk = FindObjectOfType<Chunk>();
+        SpawnChunk();
     }
 
     private void Update()
     {
+        if(_chunkCounter == 1)
+        {
+            SpawnChunk();
+            _trigger -= _previousChunk.Size.x;
+        }
         if(_trigger < _player.position.x)
         {
             SpawnChunk();
+            
         }
     }
 
     public void SpawnChunk ()
     {
         Chunk newChunk = _chunks[Random.Range(0, _chunks.Length)];
-        Vector2 position = new Vector2( (_previousChunk.Position.x + _previousChunk.Size.x / 2f) + (newChunk.Size.x / 2f),
-                                        0);
+        Vector3 position = new Vector3( (_previousChunk.Position.x + _previousChunk.Size.x / 2f) + (newChunk.Size.x / 2f),
+                                        0, 2);
         _previousChunk = Instantiate(newChunk, position, Quaternion.identity);
         _previousChunk.transform.SetParent(transform);
 
         _trigger += newChunk.Size.x;
 
         _chunkCounter++;
-        if(_chunkCounter >= 4)
+        if(_chunkCounter >= 5)
         {
-            _chunkCounter = 4;
+            _chunkCounter = 5;
             GameObject.FindWithTag("ChunkSpawner").transform.GetChild(0).GetComponent<Chunk>().Remove();
         }
     }
