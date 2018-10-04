@@ -8,6 +8,8 @@ TagManager:
   - Anti-Virus
   - Firewall
   - Wall
+  - Floor
+  - Ceiling
   layers:
   - Default
   - TransparentFX

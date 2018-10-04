@@ -9,20 +9,45 @@ public class PlayerMovement : MonoBehaviour {
     private Rigidbody2D _body;
 
     public float speed;     // speed
-    public float gravity;   // amount of gravity
-    
+    public float gravity;   // graivty
+    private float _jumpVel; // jump veloticy
+    bool _stop = false;     // stop player movement
 
     private void Start()
     {
         _body = GetComponent<Rigidbody2D>();
     }
 
-    void Update ()
+    private void Update ()
     {
-        _body.MovePosition( (_body.position + new Vector2(speed * Time.deltaTime, -gravity * Time.deltaTime)) );
-        //_body.MovePosition((_body.position + new Vector2(speed * Time.deltaTime, 0)));
+        if(!_stop)
+        {
+            CalculateMovement();
+        }
     }
 
+    // calculate player forces
+    private void CalculateMovement()
+    {
+        Vector2 position = _body.position;
+        Vector2 calcPos = new Vector2(speed * Time.deltaTime, (-_jumpVel + -gravity) * Time.deltaTime); // <<<<<<<<<<<<<<
+
+        _body.MovePosition( (position + calcPos) );
+        _jumpVel = 0;
+    }
+
+    public void SetStop(bool value)
+    {
+        _stop = value;
+    }
+    public float GetJumpVel()
+    {
+        return _jumpVel;
+    }
+    public void SetJumpVel(float value)
+    {
+        _jumpVel = value;
+    }
 
     public float GetSpeed()
     {

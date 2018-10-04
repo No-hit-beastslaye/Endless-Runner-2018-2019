@@ -9,10 +9,23 @@ public class ObjectCollision : MonoBehaviour {
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        //print(collision.gameObject.tag);
-        if(collision.gameObject.tag == "Wall" || collision.gameObject.tag == "AntiVirus")
+        if (collision.gameObject.tag == "Wall" || collision.gameObject.tag == "AntiVirus")
         {
             Die();
+        }
+        else if (collision.gameObject.tag == "Floor")
+        {
+            if(!player.GetComponent<PlayerAbilities>().GetJumpActive() )
+            {
+                player.GetComponent<PlayerAbilities>().SetJumpActive(false);
+                player.GetComponent<PlayerAbilities>().SetJumpDelay(false);
+            }
+            
+        }
+        else if (collision.gameObject.tag == "Ceiling")
+        {
+            player.GetComponent<PlayerAbilities>().SetJumpActive(false);
+            player.GetComponent<PlayerAbilities>().SetJumpDelay(true);
         }
     }
 
@@ -36,7 +49,7 @@ public class ObjectCollision : MonoBehaviour {
     private void Die()
     {
         print("die");
-        player.GetComponent<PlayerMovement>().SetSpeed(0);
+        player.GetComponent<PlayerMovement>().SetStop(true);
     }
 
 }
