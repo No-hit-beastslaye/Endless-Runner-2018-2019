@@ -30,7 +30,7 @@ public class PlayerMovement : MonoBehaviour {
     private void CalculateMovement()
     {
         Vector2 position = _body.position;
-        Vector2 calcPos = new Vector2(speed * Time.deltaTime, (-_jumpVel + -gravity) * Time.deltaTime); // <<<<<<<<<<<<<<
+        Vector2 calcPos = new Vector2(speed * Time.deltaTime, (-_jumpVel + -gravity) * Time.deltaTime);
 
         _body.MovePosition( (position + calcPos) );
         _jumpVel = 0;

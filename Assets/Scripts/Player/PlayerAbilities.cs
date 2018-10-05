@@ -7,6 +7,8 @@ public class PlayerAbilities : MonoBehaviour {
 
     [SerializeField]
     private Rigidbody2D _body;
+    public GameObject layer2;
+    public GameObject layer3;
 
     // jump vars
     private bool _jumpActive = false;       // is the player jumping
@@ -16,7 +18,6 @@ public class PlayerAbilities : MonoBehaviour {
     private float _jumpVel;                 // jump velocity to send
     public float jumpAcc;                   // jump acceleration
     private float _jumpPos;                 // current jump sine position
-    //public float
 
     // shift vars
     private bool _shiftActive = false;      // is shift active
@@ -47,9 +48,9 @@ public class PlayerAbilities : MonoBehaviour {
     // lets the player jump
     public void Jump ()
     {
+
         if(!_jumpActive && !_jumpDelay)
         {
-            print("jump");
             _jumpActive = true;
         } 
     }
@@ -59,7 +60,7 @@ public class PlayerAbilities : MonoBehaviour {
     {
         if (_jumpActive)
         {
-            _jumpVel = _body.position.y + jumpHeight * Mathf.Sin(_jumpPos * Mathf.PI / 180);
+            _jumpVel = _body.position.y - jumpHeight;
             GetComponent<PlayerMovement>().SetJumpVel(_jumpVel);
 
             _jumpPos += jumpAcc;
@@ -70,17 +71,6 @@ public class PlayerAbilities : MonoBehaviour {
                 _jumpActive = false;
                 _jumpDelay = true;
             }
-        }
-        else if(_jumpDelay)
-        {
-            _jumpVel = _body.position.y + fallSpeed * Mathf.Sin(_jumpPos * Mathf.PI / 180);
-            GetComponent<PlayerMovement>().SetJumpVel(_jumpVel);
-
-            if (_jumpPos < 180)
-            {
-                _jumpPos = 180;
-            }
-            else _jumpPos -= jumpAcc;
         }
         else
         {
@@ -94,7 +84,10 @@ public class PlayerAbilities : MonoBehaviour {
     {
         if(!_shiftDelay && !_shiftActive)
         {
+            layer2.GetComponent<ChangeOpacity>().SetTimeTotal(shiftMaxTime);
+            layer3.GetComponent<ChangeOpacity>().SetTimeTotal(shiftMaxTime);
             _shiftActive = true;
+            print("shift");
         }
     }
 
