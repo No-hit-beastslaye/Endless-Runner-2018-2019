@@ -16,7 +16,6 @@ public class ChunkSpawner : MonoBehaviour {
 
 	private void Awake () {
         _player = GameObject.FindWithTag("Player").transform;
-        
     }
 
     private void Start()

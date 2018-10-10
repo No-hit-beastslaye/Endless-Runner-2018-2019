@@ -18,7 +18,9 @@ public class InputHandler : MonoBehaviour {
 	void Update () {
         // check if the player uses an ability
         if ( Input.GetKey( input_menu ) ) print("Menu");
-        if ( Input.GetKey( input_slide ) ) player.GetComponent<PlayerAbilities>().Slide();
+        if ( Input.GetKey( input_slide ) ) player.GetComponent<PlayerAbilities>().ActivateSlide();
+        else player.GetComponent<PlayerAbilities>().DeActivateSlide();
+
         if ( Input.GetKey( input_jump ) )  player.GetComponent<PlayerAbilities>().Jump();
         if ( Input.GetKey( input_shift ) ) player.GetComponent<PlayerAbilities>().Shift();
 	}

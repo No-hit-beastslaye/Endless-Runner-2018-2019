@@ -16,12 +16,12 @@ public class ChangeOpacity : MonoBehaviour {
         if (_timeTotal > 0)
         {
             _fadeSpeed = 1 / (fadeTime * 60);
-            ChangeColor();
+            ChangeAlpha();
         }
 	}
 
 
-    private void ChangeColor() {
+    private void ChangeAlpha() {
         _timer += Time.deltaTime;
         if (_timer < fadeTime)
         {

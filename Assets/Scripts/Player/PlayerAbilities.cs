@@ -7,8 +7,10 @@ public class PlayerAbilities : MonoBehaviour {
 
     [SerializeField]
     private Rigidbody2D _body;
+    public GameObject PlayerRun;
+    public GameObject PlayerSlide;
+    public GameObject layer1;
     public GameObject layer2;
-    public GameObject layer3;
 
     // jump vars
     private bool _jumpActive = false;       // is the player jumping
@@ -39,9 +41,16 @@ public class PlayerAbilities : MonoBehaviour {
     }
 
     // lets the player slide on the ground
-    public void Slide ()
+    public void ActivateSlide ()
     {
-        print("slide");
+        PlayerRun.SetActive(false);
+        PlayerSlide.SetActive(true);
+    }
+
+    public void DeActivateSlide()
+    {
+        PlayerRun.SetActive(true);
+        PlayerSlide.SetActive(false);
     }
 
 
@@ -84,8 +93,8 @@ public class PlayerAbilities : MonoBehaviour {
     {
         if(!_shiftDelay && !_shiftActive)
         {
+            layer1.GetComponent<ChangeOpacity>().SetTimeTotal(shiftMaxTime);
             layer2.GetComponent<ChangeOpacity>().SetTimeTotal(shiftMaxTime);
-            layer3.GetComponent<ChangeOpacity>().SetTimeTotal(shiftMaxTime);
             _shiftActive = true;
             print("shift");
         }
