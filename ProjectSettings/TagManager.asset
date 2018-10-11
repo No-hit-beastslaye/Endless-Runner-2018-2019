@@ -10,6 +10,8 @@ TagManager:
   - Wall
   - Floor
   - Ceiling
+  - FirewallSpawner
+  - BossFightSpawner
   layers:
   - Default
   - TransparentFX

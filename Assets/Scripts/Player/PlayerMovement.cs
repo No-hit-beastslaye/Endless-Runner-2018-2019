@@ -36,6 +36,12 @@ public class PlayerMovement : MonoBehaviour {
         _jumpVel = 0;
     }
 
+
+    public void SetGravityFactor(string type, float value)
+    {
+        if(type == "*") gravity *= value;
+        else if(type == "/") gravity /= value;
+    }
     public void SetStop(bool value)
     {
         _stop = value;

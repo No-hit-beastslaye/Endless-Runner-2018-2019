@@ -35,13 +35,10 @@ public class ChangeOpacity : MonoBehaviour {
         }
         else if(_timer >= _timeTotal)
         {
-            print("reset");
             _timeTotal = 0;
             _timer = 0;
         }
-
         this.GetComponent<SpriteRenderer>().material.color = new Color(1f, 1f, 1f, _currentOpacity);
-        print(_currentOpacity);
     }
 
     public float GetTimeTotal()

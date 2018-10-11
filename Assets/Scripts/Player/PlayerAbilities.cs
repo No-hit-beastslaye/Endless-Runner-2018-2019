@@ -12,11 +12,12 @@ public class PlayerAbilities : MonoBehaviour {
     public GameObject layer1;
     public GameObject layer2;
 
+    private bool _slideActive = false;
+
     // jump vars
     private bool _jumpActive = false;       // is the player jumping
     private bool _jumpDelay;                // is the player falling
     public float jumpHeight;                // jump height
-    public float fallSpeed;                 // fallspeed
     private float _jumpVel;                 // jump velocity to send
     public float jumpAcc;                   // jump acceleration
     private float _jumpPos;                 // current jump sine position
@@ -45,12 +46,16 @@ public class PlayerAbilities : MonoBehaviour {
     {
         PlayerRun.SetActive(false);
         PlayerSlide.SetActive(true);
+        if (!_slideActive) GetComponent<PlayerMovement>().SetGravityFactor("*", 1.6f);
+        _slideActive = true;
     }
 
     public void DeActivateSlide()
     {
         PlayerRun.SetActive(true);
         PlayerSlide.SetActive(false);
+        if(_slideActive) GetComponent<PlayerMovement>().SetGravityFactor("/", 1.6f);
+        _slideActive = false;
     }
 
 
@@ -58,7 +63,7 @@ public class PlayerAbilities : MonoBehaviour {
     public void Jump ()
     {
 
-        if(!_jumpActive && !_jumpDelay)
+        if(!_jumpActive && !_jumpDelay && !_slideActive)
         {
             _jumpActive = true;
         } 
@@ -69,10 +74,10 @@ public class PlayerAbilities : MonoBehaviour {
     {
         if (_jumpActive)
         {
-            _jumpVel = _body.position.y - jumpHeight;
+            _jumpVel = _body.position.y + jumpHeight * Mathf.Sin(_jumpPos * Mathf.PI / 180);
             GetComponent<PlayerMovement>().SetJumpVel(_jumpVel);
 
-            _jumpPos += jumpAcc;
+            _jumpPos += jumpAcc * (_jumpPos / 99);
 
             if (_jumpPos > 270)
             {

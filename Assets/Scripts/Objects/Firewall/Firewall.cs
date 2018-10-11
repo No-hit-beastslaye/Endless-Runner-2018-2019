@@ -9,4 +9,9 @@ public class Firewall : MonoBehaviour {
     public Vector2 Size { get { return _size; } }
 
     public Vector3 Position { get { return transform.position; } }
+
+    public void Remove()
+    {
+        Destroy(gameObject);
+    }
 }
