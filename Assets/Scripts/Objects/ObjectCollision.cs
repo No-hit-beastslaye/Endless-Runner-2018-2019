@@ -1,4 +1,4 @@
-﻿    using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -50,7 +50,7 @@ public class ObjectCollision : MonoBehaviour {
     {
         print("die");
         player.GetComponent<PlayerMovement>().SetStop(true);
-        player.GetComponent<AudioSource>().Play();
+        GetComponent<AudioSource>().Play();
     }
 
 }
