@@ -44,7 +44,7 @@ public class ChunkSpawner : MonoBehaviour {
         }
         else // no boss-fight
         {
-            newChunk = _chunks[Random.Range(0, _chunks.Length)];           
+            newChunk = _chunks[Random.Range(0, _chunks.Length)];
         }
         Vector3 position = new Vector3((_previousChunk.Position.x + _previousChunk.Size.x / 2f) + (newChunk.Size.x / 2f),
                                             0, 2);

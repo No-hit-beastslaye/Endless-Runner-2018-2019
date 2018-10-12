@@ -109,6 +109,7 @@ public class PlayerAbilities : MonoBehaviour {
     {
         if (_shiftActive)
         {
+            print("shift active");
             _shiftActiveTimer += Time.deltaTime;
             if (_shiftActiveTimer >= shiftMaxTime)
             {

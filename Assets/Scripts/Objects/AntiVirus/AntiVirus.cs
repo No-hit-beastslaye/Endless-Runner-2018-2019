@@ -10,6 +10,7 @@ public class AntiVirus : MonoBehaviour {
     public float hoverSpeed;    // vertical movement speed
     private float _timer;       // timer
     private Transform _player;
+    public GameObject bullet;
 
     private void Start()
     {
@@ -29,7 +30,8 @@ public class AntiVirus : MonoBehaviour {
     private void Shoot()
     {
         _timer = 0;
-        print("shoot");
+        Vector3 position = new Vector3(transform.position.x, transform.position.y, 2);
+        Instantiate(bullet, position, Quaternion.identity);
     }
 
     private void Move()
@@ -37,7 +39,7 @@ public class AntiVirus : MonoBehaviour {
         transform.position = new Vector3(transform.position.x - (moveSpeed * Time.deltaTime), transform.position.y - (hoverSpeed * Time.deltaTime), 1);
     }
 
-    void OnCollisionEnter2D(Collision2D collision)
+    void OnTriggerEnter2D(Collider2D collision)
     {
         print("col");
         if(collision.gameObject.tag == "Wall" || collision.gameObject.tag == "Floor" || collision.gameObject.tag == "Ceiling")

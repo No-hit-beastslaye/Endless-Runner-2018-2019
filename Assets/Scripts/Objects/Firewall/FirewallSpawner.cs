@@ -39,7 +39,7 @@ public class FirewallSpawner : MonoBehaviour {
         else
         {
             position = new Vector3( Mathf.Floor(_previousFirewall.Position.x + _previousFirewall.Size.x + Random.Range(minimunDistance, maximumDistance)),
-                                    newFirewall.Size.y, 2);
+                                    newFirewall.Size.y - 1.42f, 2);
         }
         _previousFirewall = Instantiate(newFirewall, position, Quaternion.identity);
         _previousFirewall.transform.SetParent(transform);
