@@ -1,12 +1,19 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 // Juda Hensen
 public class Score : MonoBehaviour {
 
     private int _score = 0;
+    public Text scoreField;
 
+
+    private void Update()
+    {
+        scoreField.text = "score: " + _score;
+    }
 
     // resets score on death
     public void ResetScore ()

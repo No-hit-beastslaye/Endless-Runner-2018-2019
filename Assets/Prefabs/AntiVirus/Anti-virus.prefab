@@ -415,7 +415,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 23f0c11ce1f383b46b4190495fc57a53, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shootDelay: 0.1
+  shootDelay: 1.5
   moveSpeed: 3
   hoverSpeed: 1.5
   bullet: {fileID: 1320828503507150, guid: 732336883cbaec549a7bcc7b981a6a90, type: 2}
