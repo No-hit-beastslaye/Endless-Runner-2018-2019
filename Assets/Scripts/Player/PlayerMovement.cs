@@ -8,10 +8,11 @@ public class PlayerMovement : MonoBehaviour {
     [SerializeField]
     private Rigidbody2D _body;
 
-    public float speed;     // speed
-    public float gravity;   // graivty
-    private float _jumpVel; // jump veloticy
-    bool _stop = false;     // stop player movement
+    public float speed;             // speed
+    public float gravity;           // graivty
+    private float _jumpVel;         // jump veloticy
+    bool _stop = false;             // stop player movement
+    private float _distance = 0;    // distance travelled
 
     private void Start()
     {
@@ -34,6 +35,8 @@ public class PlayerMovement : MonoBehaviour {
 
         _body.MovePosition( (position + calcPos) );
         _jumpVel = 0;
+
+        _distance += calcPos.x;
     }
 
 

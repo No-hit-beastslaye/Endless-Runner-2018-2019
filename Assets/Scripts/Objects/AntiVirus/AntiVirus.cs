@@ -29,6 +29,7 @@ public class AntiVirus : MonoBehaviour {
 
     private void Shoot()
     {
+        print("shoot"); 
         _timer = 0;
         Vector3 position = new Vector3(transform.position.x, transform.position.y, 2);
         Instantiate(bullet, position, Quaternion.identity);
